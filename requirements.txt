@@ -2,6 +2,10 @@
 -e .
 
 # external requirements
+mkdocs
+mkdocs-cinder
+cookiecutter
+pytest
 asttokens==2.0.5
 backcall==0.2.0
 catboost==1.0.5
