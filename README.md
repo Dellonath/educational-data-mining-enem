@@ -1,10 +1,18 @@
-tfg
-==============================
+# Educational Data Mining Project
 
-Data Analysis and Machine Learning applied in Educational Data such as Brazillian National Exam of High School.
+<p align="center">
+  <img width=440px src="https://user-images.githubusercontent.com/56659549/167325692-bfe74a7e-02a1-4fdc-8bb1-508194fa3dd9.jpg">
+</p>
 
+## Introduction
+
+Annually, the exam Exame Nacional do Ensino Médio (ENEM), translated as National Exam of High School, chooses high school students to enter the College. The exam contains math, Portuguese language rules, science, geography, and history tests. In the end, the candidate obtains a grade that allows entering the College. About 10 million people with different cultures and socioeconomic conditions register annually for this exam, making it one of the great tests for entering a federal university in Brazil.
 Project Organization
-------------
+
+## Objective
+Apply Data Analysis and Machine Learning techniques to figure out which variables influence a candidate's performance on the high school national exam.
+
+## Project Structure
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
