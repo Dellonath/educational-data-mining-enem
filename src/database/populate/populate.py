@@ -3,10 +3,10 @@ This script is responsible to populate the MySQL database. It's require some arg
 data path, selected columns, table name and the local database password.
 
 To use:
-- python3 main.py /path/to/data /path/to/selected_columns table_name password
+- python3 populate.py </path/to/data> </path/to/selected_columns> <table_name> <password>
 
 An exemple:
-- python3 main.py enem2019.csv enem_columns.txt enem ********
+- python3 populate.py enem2019.csv enem_columns.txt enem mydbpassword
 '''
 
 # imports
@@ -31,7 +31,7 @@ with open(directory_columns, 'r') as f:
     selected_columns = list(filter(('').__ne__, f.read().split('\n')))
 
 # reading data with pandas.read_csv
-data = pd.read_csv(directory_data, sep = ';', usecols = selected_columns, error_bad_lines = False)[selected_columns]
+data = pd.read_csv(directory_data, sep = ';', usecols = selected_columns, error_bad_lines = False, encoding='latin-1')[selected_columns]
 
 # connecting with database
 mydb = mysql.connector.connect(user = 'root', 
