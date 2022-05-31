@@ -7,8 +7,6 @@ To use:
 
 An exemple:
 - python3 main.py enem2019.csv enem_columns.txt enem ********
-
-Developer: Douglas Oliveira
 '''
 
 # imports

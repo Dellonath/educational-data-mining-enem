@@ -1,30 +1,31 @@
-# -*- coding: utf-8 -*-
-import click
-import logging
-from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
+import os
+from datetime import date
+from dbconnector import DatabaseConnection
 
+query = '''SELECT 
+    * 
+FROM tfg.enem 
+WHERE 
+    rand() < 0.1
+'''
 
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+# destiny data
+DATA_DIRECTORY = 'raw'
 
+# num .parquet files in data\raw
+NUM_RAW_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir(f'data\\{DATA_DIRECTORY}'))))
+DATE_NOW = date.today().strftime('%Y%m%d')
+DATASET_DIRECTORY = f'data\\{DATA_DIRECTORY}\\v{NUM_RAW_DATA_FILES}-enem-{DATA_DIRECTORY}-{DATE_NOW}'
 
-if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+# connecting to database
+database = DatabaseConnection()
 
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
+# database consult and save the re
+# sult as .parquet file
+raw_data = database.select_query(query)
+raw_data.to_parquet(DATASET_DIRECTORY + '.parquet', engine = 'fastparquet')
 
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
-
-    main()
+# save query as sql file
+text_file = open(DATASET_DIRECTORY + '-query.sql', "w")
+text_file.write(query)
+text_file.close()
