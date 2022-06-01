@@ -10,7 +10,7 @@ class DatabaseConnection():
     def __init__(self, user = 'root', passw = 'mydbpass'):
         self.cnx = sqlalchemy.create_engine(f'mysql+pymysql://{user}:{passw}@localhost/tfg')
         
-    def select_query(self, query):
+    def query(self, query):
         
         connection = self.cnx.connect()
         enem_candidates = pd.read_sql_query(query, connection)

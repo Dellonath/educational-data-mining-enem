@@ -1,4 +1,20 @@
+'''
+Module to transform the dataset. To use, run the following command:
+- python3 make_features.py <path of raw data> [<columns>]
+
+Example:
+- python3 make_features.py 'data/raw/v0-enem-raw-20220531.parquet' 'age' 'marital_status'
+or to transform all columns of this dataset:
+- python3 make_features.py 'data/raw/v0-enem-raw-20220531.parquet' 'all_columns' 
+
+The output dataset will be in data/processed directory with same name but enem-processed
+'''
+
+import pandas as pd
 from labels import labels
+from datetime import date
+import sys
+import os
 
 class MakeFeatures():
 
@@ -77,4 +93,42 @@ class MakeFeatures():
         return list(map(float, transformed_string))
 
 
-        
+if __name__ == '__main__':
+
+    # getting arguments
+    # argv[1] = path to the csv file
+    # argv[2:] = columns names to be transformed 
+    raw_data_path = sys.argv[1]
+
+    # reading raw data to be transformed
+    to_transform_data = pd.read_parquet(raw_data_path)
+
+    columns_to_transform = sys.argv[2:] if sys.argv[2] != 'all_columns' else to_transform_data.columns
+
+    make_features = MakeFeatures()
+    
+    for column in columns_to_transform:
+
+        print(f'Starting {column}')
+        try:
+            if 'qty' in column:
+                to_transform_data.loc[:, column] = make_features.transform(to_transform_data.loc[:, column], 'qty_label')
+            else:
+                to_transform_data.loc[:, column] = make_features.transform(to_transform_data.loc[:, column], column + '_label')
+        except:
+            print(f'Something went wrong with the column: {column}')
+
+    # creating dataset name
+    NUM_PROCESSED_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir(f'../../data/processed'))))
+    date_now = date.today().strftime('%Y%m%d')
+    OUTPUT_PATH = f'../../data/processed/v{NUM_PROCESSED_DATA_FILES}-enem-processed-{date_now}'
+
+    # saving transformed data
+    to_transform_data.to_parquet(OUTPUT_PATH + '.parquet', engine = 'fastparquet')
+
+    # save command line executed
+    text_file = open(OUTPUT_PATH + '-command.txt', "w")
+    text_file.write('python3 ' + 'make_features.py ' + raw_data_path + ' ' + ' '.join(columns_to_transform))
+    text_file.close()
+            
+

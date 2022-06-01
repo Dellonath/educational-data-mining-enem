@@ -25,7 +25,7 @@ labels = {
   'marital_status_label': {
     0: 'Unknown', 
     1: 'Single', 
-    2: 'Married/Lives with partner', 
+    2: 'Married', 
     3: 'Divorced', 
     4: 'Widower'
   },
@@ -41,9 +41,9 @@ labels = {
 
   'high_school_status_label': {
     1: 'Completed High School', 
-    2: 'End in current year', 
-    3: 'Will complete high school the following year', 
-    4: 'Did not complete and is not attending high school'
+    2: 'Ends in the current year', 
+    3: 'Will complete High School the following year', 
+    4: 'Did not complete and is not attending High School'
   },
     
   'school_type_label': {
@@ -54,12 +54,12 @@ labels = {
   },
 
   'presence_label': {
-    0: 'Failed', 
+    0: 'Missed', 
     1: 'Present', 
     2: 'Eliminated'
   },
 
-  'schooling_label': {
+  'father_schooling_label': {
     'A': 'Never studied',
     'B': 'Didn\'t complete Elementary School',
     'C': 'Didn\'t complete Elementary School',
@@ -70,7 +70,27 @@ labels = {
     'H': 'Unknown'
   },
 
-  'profession_label': {
+  'mother_schooling_label': {
+    'A': 'Never studied',
+    'B': 'Didn\'t complete Elementary School',
+    'C': 'Didn\'t complete Elementary School',
+    'D': 'Completed Elementary School',
+    'E': 'Completed High School',
+    'F': 'Completed College',
+    'G': 'Completed Graduate',
+    'H': 'Unknown'
+  },
+
+  'father_profession_group_label': {
+    'A': 'Group A',
+    'B': 'Group B',
+    'C': 'Group C',
+    'D': 'Group D',
+    'E': 'Group E',
+    'F': 'Group F'
+  },
+
+  'mother_profession_group_label': {
     'A': 'Group A',
     'B': 'Group B',
     'C': 'Group C',
@@ -107,14 +127,9 @@ labels = {
     'E': 'Four or more'
   },
 
-  'internet_acess_label': {
+  'internet_access_label': {
     'A': 'No', 
     'B': 'Yes'
-  },
-
-  'boolean_label': {
-    0: 'No', 
-    1: 'Yes'
   },
 
   'columns': {
