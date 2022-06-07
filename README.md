@@ -6,8 +6,9 @@
 
 ## Introduction
 
-Annually, the exam Exame Nacional do Ensino Médio (ENEM), translated as National Exam of High School, chooses high school students to enter the College. The exam contains math, Portuguese language rules, science, geography, and history tests. In the end, the candidate obtains a grade that allows entering the College. About 10 million people with different cultures and socioeconomic conditions register annually for this exam, making it one of the great tests for entering a federal university in Brazil.
-Project Organization
+Annualy, a brazillian exam called ENEM(Exame Nacional do Ensino Médio), translated as High school national exam, enrolls high school students into college. This exam have math, portuguese, science, geography and history tests. Finishing the test the candidate will receive a grade that will be used for entering college.
+
+About 10 million people with diferente cultures and socioeconomic conditions register annually for this exam, making it the main entrance into college life in Brazil.
 
 ## Objective
 Apply Data Analysis and Machine Learning techniques to figure out which variables influence a candidate's performance on the high school national exam.
