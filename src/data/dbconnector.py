@@ -7,8 +7,8 @@ class DatabaseConnection():
     class just to connect with the database
     '''
     
-    def __init__(self, user = 'root', passw = 'mydbpass'):
-        self.cnx = sqlalchemy.create_engine(f'mysql+pymysql://{user}:{passw}@localhost/tfg')
+    def __init__(self, user = 'dellonath', passw = 'mydbpass'):
+        self.cnx = sqlalchemy.create_engine(f'mysql+pymysql://{user}:{passw}@192.168.0.136/tfg')
         
     def query(self, query):
         

@@ -1,9 +1,9 @@
 '''
 Module to create the dataset. To use, run the following command:
-- python3 make_dataset.py <raw/processed> <SQL Query>
+- make dataset sql=<SQL Query>
 
 Example:
-- python3 make_dataset.py raw "SELECT * FROM tfg.enem"
+- make dataset sql="select \* from enem limit 10"
 
 '''
 
@@ -12,22 +12,20 @@ import sys
 from datetime import date
 from dbconnector import DatabaseConnection
 
-
 if __name__ == '__main__':
     # arguments
-    query = sys.argv[1]
+    query = ' '.join(sys.argv[1:])
 
     # creating dataset name
-    NUM_RAW_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir('../../data/raw'))))
-    date_now = date.today().strftime('%Y%m%d')
-    OUTPUT_PATH = f'../../data/raw/v{NUM_RAW_DATA_FILES}-enem-raw-{date_now}'
+    NUM_RAW_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir('data/raw'))))
+    DATE_NOW = date.today().strftime('%Y%m%d')
+    OUTPUT_PATH = f'data/raw/v{NUM_RAW_DATA_FILES}-enem-raw-{DATE_NOW}'
 
     # connecting to database
     database = DatabaseConnection()
 
-    # database consult and save the re
-    # sult as .parquet file
-    raw_data = database.select_query(query)
+    # database consult and save the result as .parquet file
+    raw_data = database.query(query)
     raw_data.to_parquet(OUTPUT_PATH + '.parquet', engine = 'fastparquet')
 
     # save query as sql file

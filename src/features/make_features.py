@@ -95,40 +95,31 @@ class MakeFeatures():
 
 if __name__ == '__main__':
 
-    # getting arguments
-    # argv[1] = path to the csv file
-    # argv[2:] = columns names to be transformed 
-    raw_data_path = sys.argv[1]
+    
+    raw_directory = sorted(os.listdir('data/raw'), reverse = True)[0]
+    raw_directory = f'data/raw/{raw_directory}'
 
     # reading raw data to be transformed
-    to_transform_data = pd.read_parquet(raw_data_path)
+    to_transform_data = pd.read_parquet(raw_directory)
+    columns_to_transform = to_transform_data.columns
 
-    columns_to_transform = sys.argv[2:] if sys.argv[2] != 'all_columns' else to_transform_data.columns
-
-    make_features = MakeFeatures()
+    MK = MakeFeatures()
     
     for column in columns_to_transform:
 
-        print(f'Starting {column}')
         try:
             if 'qty' in column:
-                to_transform_data.loc[:, column] = make_features.transform(to_transform_data.loc[:, column], 'qty_label')
+                to_transform_data.loc[:, column] = MK.transform(to_transform_data.loc[:, column], 'qty_label')
             else:
-                to_transform_data.loc[:, column] = make_features.transform(to_transform_data.loc[:, column], column + '_label')
+                to_transform_data.loc[:, column] = MK.transform(to_transform_data.loc[:, column], column + '_label')
         except:
             print(f'Something went wrong with the column: {column}')
 
     # creating dataset name
-    NUM_PROCESSED_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir(f'../../data/processed'))))
+    NUM_PROCESSED_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir(f'data/processed'))))
     date_now = date.today().strftime('%Y%m%d')
-    OUTPUT_PATH = f'../../data/processed/v{NUM_PROCESSED_DATA_FILES}-enem-processed-{date_now}'
+    OUTPUT_PATH = f'data/processed/v{NUM_PROCESSED_DATA_FILES}-enem-processed-{date_now}'
 
     # saving transformed data
     to_transform_data.to_parquet(OUTPUT_PATH + '.parquet', engine = 'fastparquet')
-
-    # save command line executed
-    text_file = open(OUTPUT_PATH + '-command.txt', "w")
-    text_file.write('python3 ' + 'make_features.py ' + raw_data_path + ' ' + ' '.join(columns_to_transform))
-    text_file.close()
             
-
