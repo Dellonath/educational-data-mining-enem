@@ -1,1 +1,0 @@
-select * from enem limit 200000

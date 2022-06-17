@@ -85,3 +85,6 @@ __pycache__/
 
 # Mypy cache
 .mypy_cache/
+
+# Authentication tokens
+authentication.json

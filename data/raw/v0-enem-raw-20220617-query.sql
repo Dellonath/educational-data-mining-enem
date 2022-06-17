@@ -1,0 +1,1 @@
+SELECT * FROM tfg.enem WHERE rand() < 0.05;
