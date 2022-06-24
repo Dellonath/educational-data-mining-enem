@@ -18,7 +18,6 @@ import sys
 import json 
 auth = json.load(open('src/authentication.json'))
 
-
 # arguments
 # directory of data in .csv format
 directory_data = sys.argv[1]

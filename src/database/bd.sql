@@ -46,10 +46,10 @@ CREATE TABLE tfg.enem (
   mother_profession_group CHAR,
   family_members INT DEFAULT NULL,
   family_income CHAR,
-  bedrooms_number CHAR,
-  cars_number CHAR,
-  television_number CHAR,
-  phones_number CHAR,
-  computer_numbers CHAR,
+  bedrooms_qty CHAR,
+  cars_qty CHAR,
+  television_qty CHAR,
+  phones_qty CHAR,
+  computer_qty CHAR,
   internet_access CHAR
 )

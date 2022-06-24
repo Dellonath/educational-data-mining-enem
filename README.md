@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Annualy, a brazillian exam called ENEM(Exame Nacional do Ensino Médio), translated as High school national exam, enrolls high school students into college. This exam have math, portuguese, science, geography and history tests. Finishing the test the candidate will receive a grade that will be used for entering college.
+Annualy, a brazillian test called ENEM(Exame Nacional do Ensino Médio), translated as High school national exam, enrolls high school students into college. This exam have math, portuguese, science, geography and history tests. Finishing the test the candidate will receive a grade that will be used for entering college.
 
 About 10 million people with diferente cultures and socioeconomic conditions register annually for this exam, making it the main entrance into college life in Brazil.
 

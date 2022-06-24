@@ -62,28 +62,28 @@ class MakeLabeledData():
 if __name__ == '__main__':
     
     # take the latest raw data version
-    raw_directory = sorted(filter(lambda dir: '.parquet' in dir, os.listdir('data/raw')), reverse = True)[0]
+    raw_directory = sorted(filter(lambda dir: '.csv' in dir, os.listdir('data/raw')), reverse = True)[0]
     raw_directory = 'data/raw/' + raw_directory
 
     # reading raw data to be transformed
-    to_transform_data = pd.read_parquet(raw_directory)
+    to_transform_data = pd.read_csv(raw_directory, sep = ';')
     columns_to_transform = to_transform_data.columns
-
     MLD = MakeLabeledData()
     
     for column in columns_to_transform:
         try:
-            if 'number' in column:
-                to_transform_data.loc[:, column] = MLD.transform(to_transform_data.loc[:, column], 'number_label')
+            if 'qty' in column:
+                to_transform_data.loc[:, column] = MLD.transform(to_transform_data.loc[:, column], 'qty_label')
             else:
                 to_transform_data.loc[:, column] = MLD.transform(to_transform_data.loc[:, column], column + '_label')
         except:
-            print(f'Something went wrong with the column: {column}')
+            pass
 
+    
     # creating dataset name
     NUM_PROCESSED_DATA_FILES = len(list(filter(lambda file: 'parquet' in file, os.listdir(f'data/processed'))))
-    date_now = date.today().strftime('%Y%m%d')
-    OUTPUT_PATH = f'data/processed/v{NUM_PROCESSED_DATA_FILES}-enem-processed-{date_now}'
+    DATE_NOW = date.today().strftime('%Y%m%d')
+    OUTPUT_PATH = f'data/processed/v{NUM_PROCESSED_DATA_FILES}-enem-processed-{DATE_NOW}'
 
     # saving transformed data
-    to_transform_data.to_parquet(OUTPUT_PATH + '.parquet', engine = 'fastparquet')
+    to_transform_data.to_parquet(OUTPUT_PATH + '.parquet')

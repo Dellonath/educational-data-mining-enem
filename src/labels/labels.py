@@ -101,25 +101,25 @@ labels = {
 
   'family_income_label': {
     'A': 'No income',
-    'B': 'Less than BRL 1.045,00',
-    'C': 'BRL 1.045,01 to BRL 1.567,50',
-    'E': 'BRL 2.090,01 to BRL 2.612,50',
-    'D': 'BRL 1.567,51 to BRL 2.090,00',
-    'F': 'BRL 2.612,51 to BRL 3.135,00',
-    'G': 'BRL 3.135,01 to BRL 4.180,00',
-    'H': 'BRL 4.180,01 to BRL 5.225,00',
-    'I': 'BRL 5.225,01 to BRL 6.270,00',
-    'J': 'BRL 6.270,01 to BRL 7.315,00',
-    'K': 'BRL 7.315,01 to BRL 8.360,00',
-    'L': 'BRL 8.360,01 to BRL 9.405,00',
-    'M': 'BRL 9.405,01 to BRL 10.450,00',
-    'N': 'BRL 10.450,01 to BRL 12.540,00',
-    'O': 'BRL 12.540,01 to BRL 15.675,00',
-    'P': 'BRL 15.675,01 to BRL 20.900,00',
-    'Q': 'More than BRL 20.900,00'
+    'B': 'Less than 1 minimum wage',
+    'C': 'Between 1-1.5 minimum wages',
+    'D': 'Between 1.5-2 minimum wages',
+    'E': 'Between 2-2.5 minimum wages',
+    'F': 'Between 2.5-3 minimum wages',
+    'G': 'Between 3-4 minimum wages',
+    'H': 'Between 4-5 minimum wages',
+    'I': 'Between 5-6 minimum wages',
+    'J': 'Between 6-7 minimum wages',
+    'K': 'Between 7-8 minimum wages',
+    'L': 'Between 8-9 minimum wages',
+    'M': 'Between 9-10 minimum wages',
+    'N': 'Between 10-12 minimum wages',
+    'O': 'Between 12-15 minimum wages',
+    'P': 'Between 15-20 minimum wages',
+    'Q': 'More than 20 minimum wages'
   },
 
-  'number_label': {
+  'qty_label': {
     'A': 'No',
     'B': 'One',
     'C': 'Two',
@@ -141,7 +141,7 @@ labels = {
     'TP_COR_RACA': 'color_race',
     'TP_ST_CONCLUSAO': 'high_school_status',
     'TP_ANO_CONCLUIU': 'year_completion_high_school',
-    'TP_ESCOLA': 'type_school',
+    'TP_ESCOLA': 'school_type',
     'CO_MUNICIPIO_ESC': 'id_city_school',
     'NO_MUNICIPIO_ESC': 'city_school',
     'SG_UF_ESC': 'state_school',
@@ -166,11 +166,11 @@ labels = {
     'Q004': 'mother_profession_group',
     'Q005': 'family_members',
     'Q006': 'family_income',
-    'Q009': 'bedrooms_number',
-    'Q010': 'cars_number',
-    'Q019': 'television_number',
-    'Q022': 'phones_number',
-    'Q024': 'computer_numbers',
+    'Q009': 'bedrooms_qty',
+    'Q010': 'cars_qty',
+    'Q019': 'television_qty',
+    'Q022': 'phones_qty',
+    'Q024': 'computer_qty',
     'Q025': 'internet_access'
   }
 }
